@@ -54,8 +54,16 @@ export const DataContextProvider = props => {
     const checkItem = obj => obj.key === key;
 
     //if the item already exist in the cart, only plus or minus the amount
+
     if (cart.some(checkItem)) {
+      //if plus amount, increase the total number in amountArray (exist)
+      const updatedCart = cart.map(p =>
+        p.key === key ? {...p, amount: amountArray[key - 1]} : p,
+      );
+      setCart(updatedCart);
+      console.log(amountArray);
     } else {
+      //add new item into cart (not exist)
       if (amountArray[key - 1] == 0) {
       } else {
         setCart([
