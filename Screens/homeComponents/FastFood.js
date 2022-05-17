@@ -10,10 +10,10 @@ import {
 import FastFoodScreenBox from './FastFoodScreenBox';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Ionicons';
-import DataContext from '../../datacontext';
+import DataContextFast from '../../datacontextFast';
 
 const FastFood = () => {
-  const ctx = useContext(DataContext);
+  const ctx = useContext(DataContextFast);
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [data, setData] = useState({});
@@ -96,9 +96,24 @@ const FastFood = () => {
                 }}></View>
             )}
             <View style={{padding: '5%'}}>
-              <Text style={{fontWeight: '600', fontSize: 25, color: 'black'}}>
-                {data.subtitle}
-              </Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}>
+                <Text
+                  style={{
+                    fontWeight: '600',
+                    fontSize: 25,
+                    color: 'black',
+                  }}>
+                  {data.title}
+                </Text>
+                <Text style={{fontSize: 25, color: 'green', fontWeight: '600'}}>
+                  RM {data.price}
+                </Text>
+              </View>
               <Text
                 style={{
                   textAlign: 'justify',

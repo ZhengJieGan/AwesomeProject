@@ -1,10 +1,13 @@
-import React, {useContext, useState, useCallback} from 'react';
+import React, {useContext, useState, useCallback, useReducer} from 'react';
+import DataContextHealthy from './datacontextHealthy';
 
-const DataContext = React.createContext({
+const DataContextFast = React.createContext({
   cart: [{}],
   amountArray: [],
   title: '',
+  price: 0,
   keys: 0,
+  total: 0,
   onIncrement: () => {},
   onDecrement: () => {},
   onCartAddItem: () => {},
@@ -12,15 +15,19 @@ const DataContext = React.createContext({
   onSetItemTitle: (title, key) => {},
 });
 
-export const DataContextProvider = props => {
+export const DataContextFastProvider = props => {
+  //const ctx = useContext(DataContextHealthy);
   const [title, setTitle] = useState('');
+  const [price, setPrice] = useState(0);
   const [key, setKey] = useState(0);
+  const [total, setTotal] = useState(0);
   var [cart, setCart] = useState([]);
   const [amountArray, setAmountArray] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
 
-  const setItemTitle = (title, key) => {
+  const setItemTitle = (title, key, price) => {
     setTitle(title);
     setKey(key);
+    setPrice(price);
   };
 
   const IncrementHandler = () => {
@@ -61,18 +68,20 @@ export const DataContextProvider = props => {
         p.key === key ? {...p, amount: amountArray[key - 1]} : p,
       );
       setCart(updatedCart);
-      console.log(amountArray);
+      setTotal(price * amountArray[key - 1]);
+      //console.log(amountArray);
     } else {
       //add new item into cart (not exist)
       if (amountArray[key - 1] == 0) {
       } else {
         setCart([
           ...cart,
-          {key: key, title: title, amount: amountArray[key - 1]},
+          {key: key, title: title, amount: amountArray[key - 1], price: price},
         ]);
       }
     }
-    console.log(cart);
+    setTotal(total + price * amountArray[key - 1]);
+    //console.log(total);
   };
 
   var removeByAttr = function (arr, attr, value) {
@@ -98,12 +107,14 @@ export const DataContextProvider = props => {
   };
 
   return (
-    <DataContext.Provider
+    <DataContextFast.Provider
       value={{
         keys: key,
+        price: price,
         cart: cart,
         amountArray: amountArray,
         title: title,
+        total: total,
         onSetItemTitle: setItemTitle,
         onIncrement: IncrementHandler,
         onDecrement: DecrementHandler,
@@ -111,8 +122,8 @@ export const DataContextProvider = props => {
         onCartRemoveItem: CartRemoveItem,
       }}>
       {props.children}
-    </DataContext.Provider>
+    </DataContextFast.Provider>
   );
 };
 
-export default DataContext;
+export default DataContextFast;
