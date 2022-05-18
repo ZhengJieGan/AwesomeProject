@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Pay from './Screens/payComponents/Pay';
-import Profile from './Screens/profileComponents/Profile';
+import ProfileStackScreen from './Screens/profileComponents/Profile';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HomeStackScreen from './Screens/homeComponents/Home';
 import FastFood from './Screens/homeComponents/FastFood';
@@ -53,7 +53,7 @@ const App = () => {
             })}>
             <Tab.Screen name="Home" component={HomeStackScreen} />
             <Tab.Screen name="Pay" component={PayStackScreen} />
-            <Tab.Screen name="Profile" component={Profile} />
+            <Tab.Screen name="Profile" component={ProfileStackScreen} />
           </Tab.Navigator>
         </NavigationContainer>
       </DataContextHealthyProvider>

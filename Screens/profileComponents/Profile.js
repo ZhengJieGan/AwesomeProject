@@ -1,9 +1,28 @@
 import React from 'react';
 import {Text, View, TouchableOpacity, ScrollView, Image} from 'react-native';
 import {TransactionHistory} from './transactionHistory';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import HealthyFood from '../homeComponents/HealthyFood';
 
-const Profile = () => (
-  <ScrollView style={{height: 'auto'}}>
+const ProfileStack = createNativeStackNavigator();
+
+const ProfileStackScreen = ({navigation}) => {
+  return (
+    <ProfileStack.Navigator
+      screenOptions={{
+        headerShown: false,
+        // headerShadowVisible: false,
+        // headerTitleAlign: 'left',
+        //backgroundColor: 'white',
+      }}>
+      <ProfileStack.Screen name="ProfileScreen" component={Profile} />
+      <ProfileStack.Screen name="HealthyFood" component={HealthyFood} />
+    </ProfileStack.Navigator>
+  );
+};
+
+const Profile = ({navigation}) => (
+  <ScrollView style={{height: 'auto', backgroundColor: 'white'}}>
     {/* Top View */}
     <View
       style={{
@@ -56,6 +75,7 @@ const Profile = () => (
         </Text>
       </View>
       <TouchableOpacity
+        onPress={() => navigation.navigate('HealthyFood')}
         style={{
           width: '50%',
           height: '30%',
@@ -103,4 +123,4 @@ const Profile = () => (
   </ScrollView>
 );
 
-export default Profile;
+export default ProfileStackScreen;
