@@ -28,31 +28,31 @@ const HomeStackScreen = ({navigation}) => {
 const DATA = [
   {
     id: '1',
-    title: 'First Item',
+    title: 'Chicken Breast',
     imageUrl:
       'https://www.simplyrecipes.com/thmb/Q_0Tl40E7EkxpmOImQeTpzFEO38=/648x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Grilled-Chicken-LEAD-SEO-Vertical-3c66b6ae87184189920ad84f3f1db6bb.jpg',
   },
   {
     id: '2',
-    title: 'Second Item',
+    title: 'Salmon',
     imageUrl:
       'https://i0.wp.com/www.onceuponachef.com/images/2018/02/pan-seared-salmon-.jpg?resize=850%2C700&ssl=1',
   },
   {
     id: '3',
-    title: 'Third Item',
+    title: 'Broccoli',
     imageUrl:
       'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/the-health-benefits-of-broccoli-main-guide-image-700-350-631a035.jpg?quality=90&webp=true&resize=700,636',
   },
   {
     id: '4',
-    title: 'Fourth Item',
+    title: 'Eggs',
     imageUrl:
       'https://www.thespruceeats.com/thmb/Oqvuvzic6RJX1xgbyozONodtju4=/940x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/perfect-hard-boiled-eggs-995510-Hero_3-03d1b108d1ca489dad9e1f1d7fdba73f.jpg',
   },
   {
     id: '5',
-    title: 'Fifth Item',
+    title: 'Almond',
     imageUrl:
       'https://images.immediate.co.uk/production/volatile/sites/30/2021/02/almonds-9e25ce7.jpg?quality=45&resize=504,458?quality=90&webp=true&resize=504,458',
   },

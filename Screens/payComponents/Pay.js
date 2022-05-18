@@ -56,7 +56,23 @@ const Pay = () => {
             Pay RM {ctx1.total + ctx2.total}
           </Text>
         </View>
-      ) : null}
+      ) : (
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Text
+            style={{
+              fontWeight: '600',
+              fontSize: 25,
+              color: 'green',
+              marginTop: '80%',
+            }}>
+            No items is in the cart
+          </Text>
+        </View>
+      )}
     </ScrollView>
   );
 };
